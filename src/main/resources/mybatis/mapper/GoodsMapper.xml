@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chm.mapper.GoodsMapper">
+    <select id="findAll" resultType="com.chm.bean.Goods">
+        select * from `goods`
+    </select>
+
+    <!-- 条件搜索 -->
+    <select id="search" resultType="com.chm.bean.Goods">
+        select * from `goods`
+        <where>
+            <if test="gName != null and gName != ''">
+                `g_name` like CONCAT("%", #{gName}, "%")
+            </if>
+            <if test="gType != null and gType != ''">
+                and `g_type` = #{gType}
+            </if>
+        </where>
+    </select>
+
+    <select id="findById" resultType="com.chm.bean.Goods">
+        select * from `goods`
+        where `id` = #{id}
+    </select>
+
+    <insert id="saveGoods">
+        insert into `goods` (`id`, `g_name`, `g_price`, `g_stock`, `g_type`, `g_origin`)
+        values (#{id}, #{gName}, #{gPrice}, #{gStock}, #{gType}, #{gOrigin})
+    </insert>
+
+    <update id="updateGoods">
+        update `goods`
+        set `g_name`=#{gName}, `g_price`=#{gPrice}, `g_stock`=#{gStock}, `g_type`=#{gType}, `g_origin`=#{gOrigin}
+        where `id` = #{id}
+    </update>
+
+    <delete id="deleteById">
+        delete from `goods`
+        where `id` = #{id}
+    </delete>
+</mapper>
