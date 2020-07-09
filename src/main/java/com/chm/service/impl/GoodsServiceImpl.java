@@ -27,11 +27,6 @@ public class GoodsServiceImpl implements GoodsService {
         return goodsMapper.findAll();
     }
 
-//    @Override
-//    public List<Goods> search(GoodsSearchMap goodsSearchMap, Integer currentPage) {
-//        return goodsMapper.search(goodsSearchMap, currentPage);
-//    }
-
     @Override
     public List<Goods> search(Goods goods) {
         logger.info("条件搜索");

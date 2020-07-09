@@ -10,7 +10,6 @@ public interface GoodsService {
 
     List<Goods> findAll();
 
-    //List<Goods> search(GoodsSearchMap goodsSearchMap, Integer currentPage);
     List<Goods> search(Goods goods);
 
     Goods findById(Integer id);

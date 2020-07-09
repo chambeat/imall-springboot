@@ -9,8 +9,6 @@ public interface GoodsMapper {
 
     List<Goods> findAll();
 
-    // 条件搜索
-//    List<Goods> search(GoodsSearchMap goodsSearchMap, Integer currentPage);
     List<Goods> search(Goods goods);
 
     Goods findById(Integer id);
